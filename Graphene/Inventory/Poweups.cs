@@ -15,30 +15,30 @@ namespace Graphene.Inventory
         private int _limit;
         private IWearable[] _wearables;
         
-        public AddError AddItem(IItem item)
+        public InventoryResponse AddItem(IItem item)
         {
             Debug.LogError("Poweruos cant carry itens");
-            return AddError.Exception;
+            return InventoryResponse.Exception;
         }
 
-        public AddError AddWearable(IWearable wearable)
+        public InventoryResponse AddWearable(IWearable wearable)
         {
             if (Contains(wearable))
-                return AddError.Duplicated;
+                return InventoryResponse.Duplicated;
             return Add(wearable);
         }
 
-        private AddError Add(IWearable wearable)
+        private InventoryResponse Add(IWearable wearable)
         {
             for (int i = 0; i < _wearables.Length; i++)
             {
                 if (_wearables[i] == null)
                 {
                     _wearables[i] = wearable;
-                    return AddError.Success;
+                    return InventoryResponse.Success;
                 }
             }
-            return AddError.NoMoreRoom;
+            return InventoryResponse.NoMoreRoom;
         }
 
         bool Contains(IWearable wearable)

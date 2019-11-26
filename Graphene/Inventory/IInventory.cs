@@ -2,7 +2,7 @@
 
 namespace Graphene.Inventory
 {
-    public enum AddError
+    public enum InventoryResponse
     {
         Exception = 0,
         Duplicated = 1,
@@ -11,8 +11,8 @@ namespace Graphene.Inventory
     }
     public interface IInventory
     {
-        AddError AddItem(IItem item);
-        AddError AddWearable(IWearable wearable);
+        InventoryResponse AddItem(IItem item);
+        InventoryResponse AddWearable(IWearable wearable);
         IWearable GetByType(Type type);
     }
 }
